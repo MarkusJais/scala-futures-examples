@@ -22,6 +22,7 @@ object MoreThanOneFuture extends App {
     //Fish("Great White Shark", 10.00),
     Fish("Mackerel, MSC", 20.00))
 
+  //  TODO this is not concurrent, define futures before for expression
   val completeValueInDollarsFuture = for {
     bookPrice <- Future { orders.computeBookValue(books) }
     fishPrice <- Future { orders.computerFishalue(fishes) }
