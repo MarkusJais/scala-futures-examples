@@ -1,14 +1,9 @@
-package com.markusjais.scala.futures.examples.basics
-
-import com.markusjais.scala.futures.examples.business.Book
-import com.markusjais.scala.futures.examples.business.orders
+package com.markusjais.scala.futures.examples.functional.mapFlatMap
 import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration._
 import scala.util.Success
 import scala.util.Failure
-import scala.concurrent.Await
-import com.markusjais.scala.futures.examples.business.Fish
 
 object BrokenConcurreny extends App {
 

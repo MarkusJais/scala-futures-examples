@@ -8,6 +8,8 @@ case class Book(title: String, price: Double)
 // dummy object to fake some functions for ordering stuff
 object orders {
 
+  import sleep._
+  
   def computeBookValue(books: List[Book]) = {
     sleepRandom
 
@@ -36,7 +38,23 @@ object orders {
     sleepRandom
     amountInDollar * 1.2
   }
-
-  private def sleepRandom = Thread.sleep(Random.nextInt(500))
-
+  
+  
+  def getOrderInEurosFromDb(orderId: Long) = {
+    sleepRandom
+    Random.nextInt(100)
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 }

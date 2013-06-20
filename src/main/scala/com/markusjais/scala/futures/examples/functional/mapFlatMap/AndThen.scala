@@ -1,4 +1,4 @@
-package com.markusjais.scala.futures.examples.basics
+package com.markusjais.scala.futures.examples.functional.mapFlatMap
 
 import com.markusjais.scala.futures.examples.business.Book
 import com.markusjais.scala.futures.examples.business.orders
@@ -7,7 +7,6 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration._
 import scala.util.Success
 import scala.util.Failure
-import scala.concurrent.Await
 
 object AndThen extends App {
 

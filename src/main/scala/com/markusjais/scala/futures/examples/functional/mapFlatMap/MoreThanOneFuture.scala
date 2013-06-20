@@ -1,4 +1,4 @@
-package com.markusjais.scala.futures.examples.basics
+package com.markusjais.scala.futures.examples.functional.mapFlatMap
 
 import com.markusjais.scala.futures.examples.business.Book
 import com.markusjais.scala.futures.examples.business.orders
@@ -7,7 +7,6 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration._
 import scala.util.Success
 import scala.util.Failure
-import scala.concurrent.Await
 import com.markusjais.scala.futures.examples.business.Fish
 
 object MoreThanOneFuture extends App {
@@ -18,14 +17,15 @@ object MoreThanOneFuture extends App {
     Book("Akka in Action", 10.00))
 
   val fishes = List(
-    Fish("Pazific Salmon, MSC", 10.00),
-    //Fish("Great White Shark", 10.00),
+    Fish("Pazific Salmon, MSC", 50.00),
     Fish("Mackerel, MSC", 20.00))
 
-  //  TODO this is not concurrent, define futures before for expression
+  val bookPriceFuture = Future { orders.computeBookValue(books) }
+  val fishPriceFuture = Future { orders.computerFishalue(fishes) }
+
   val completeValueInDollarsFuture = for {
-    bookPrice <- Future { orders.computeBookValue(books) }
-    fishPrice <- Future { orders.computerFishalue(fishes) }
+    bookPrice <- bookPriceFuture
+    fishPrice <- fishPriceFuture
     valueWithVat <- Future { orders.computeValueWithVat(bookPrice + fishPrice) }
     valueInDollars <- Future { orders.euroToDollar(valueWithVat) }
   } yield (valueInDollars)
@@ -37,6 +37,5 @@ object MoreThanOneFuture extends App {
 
   // necessary in this dummy app because otherwise it would terminate before Future can complete
   Thread.sleep(5000)
-
 }
 
