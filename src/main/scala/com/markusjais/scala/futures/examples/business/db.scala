@@ -10,12 +10,12 @@ object db {
 
   def readFromSlaveDB(userId: Long) = {
     sleepRandom
-    if (userId == 42) "Joe" else throw new NoSuchElementException
+    if (userId == 42) "Joe from slave" else throw new NoSuchElementException
   }
 
   def readFromMasterDB(userID: Long) = {
     sleepRandom
-    "John"
+    "John from master"
   }
 
   def readUserNameFromBrokenCacheConnection(userID: Long) = {
