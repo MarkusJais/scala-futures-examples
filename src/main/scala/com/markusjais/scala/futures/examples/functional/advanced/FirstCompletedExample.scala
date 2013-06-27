@@ -11,10 +11,10 @@ import com.markusjais.scala.futures.examples.business.db
 object FirstCompletedExample extends App {
   
   
-  val cacheFuture = Future { db.readUserNameFromCache(42) }
-  val dbFuture = Future { db.readUserNameFromSlowDB(42) }
+  val cacheFuture1 = Future { db.readUserNameFromCacheServer_1(42) }
+  val cacheFuture2 = Future { db.readUserNameFromCacheServer_2(42) }
 
-  Future.firstCompletedOf(List(cacheFuture, dbFuture)) onSuccess {  // ignore failure here
+  Future.firstCompletedOf(List(cacheFuture1, cacheFuture2)) onSuccess {  // ignore failure here
     case userName => println("user: " + userName)
   }
   

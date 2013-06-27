@@ -7,31 +7,35 @@ import java.io.IOException
 object db {
 
   import sleep._
-  
+
   def readFromSlaveDB(userId: Long) = {
     sleepRandom
     if (userId == 42) "Joe" else throw new NoSuchElementException
   }
-  
+
   def readFromMasterDB(userID: Long) = {
     sleepRandom
     "John"
   }
-  
+
   def readUserNameFromBrokenCacheConnection(userID: Long) = {
     sleepRandom
     throw new IOException("io error")
   }
-  
+
   def readUserNameFromSlowDB(userID: Long) = {
     sleepRandom
     "Maria from slow DB"
   }
-  
-  def readUserNameFromCache(userID: Long) = {
+
+  def readUserNameFromCacheServer_1(userID: Long) = {
     Thread.sleep(200)
-    "Maria From Cache"
+    "Maria from cache server 1"
   }
 
+  def readUserNameFromCacheServer_2(userID: Long) = {
+    Thread.sleep(200)
+    "Maria from cache server 2"
+  }
 
 }
