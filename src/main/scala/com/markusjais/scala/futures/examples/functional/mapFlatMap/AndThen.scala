@@ -27,8 +27,8 @@ object AndThen extends App {
 
   println("done")
   
-  // necessary in this dummy app because otherwise it would terminate before Future can complete
-  Thread.sleep(5000)
+  // necessary in this dummy app to let future complete
+  System.in.read()
 
 }
 

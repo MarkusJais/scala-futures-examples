@@ -19,7 +19,6 @@ object FoldExample extends App {
   print("total amount:  ")
   totalAmountFuture foreach println
 
-  // necessary in this dummy app because otherwise it would terminate before Future can complete
-  Thread.sleep(50000)
-
+  // necessary in this dummy app to let future complete
+  System.in.read()
 }

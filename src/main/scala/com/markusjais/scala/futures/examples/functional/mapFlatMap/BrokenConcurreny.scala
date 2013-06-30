@@ -18,7 +18,7 @@ object BrokenConcurreny extends App {
     case Failure(t: Throwable) => println(s"Shit, something went wrong: $t")
   }
 
-  // necessary in this dummy app because otherwise it would terminate before Future can complete
-  Thread.sleep(5000)
+  // necessary in this dummy app to let future complete
+  System.in.read()
 }
 
