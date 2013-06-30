@@ -6,7 +6,7 @@ import scala.concurrent.duration._
 
 object MapExample extends App {
 
- val basePrice = 100.00;
+ val basePrice = 100.00
 
   val priceWithVat = Future { orders.computeValueWithVat(basePrice) }
   val priceInDollars = priceWithVat map { result => 
