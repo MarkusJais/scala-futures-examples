@@ -31,7 +31,7 @@ object MoreThanOneFuture extends App {
   } yield (valueInDollars)
 
   completeValueInDollarsFuture onComplete {
-    case Success(priceTotal) => println("complete Value in Dollars:" + priceTotal)
+    case Success(priceTotal) => println(s"complete Value in Dollars: $priceTotal")
     case Failure(t: Throwable) => println(s"Shit, something went wrong: $t")
   }
 

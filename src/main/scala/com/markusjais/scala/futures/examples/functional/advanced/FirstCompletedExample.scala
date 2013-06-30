@@ -15,7 +15,7 @@ object FirstCompletedExample extends App {
   val cacheFuture2 = Future { db.readUserNameFromCacheServer_2(42) }
 
   Future.firstCompletedOf(List(cacheFuture1, cacheFuture2)) onSuccess {  // ignore failure here
-    case userName => println("user: " + userName)
+    case userName => println("user: $userName")
   }
   
   // necessary in this dummy app because otherwise it would terminate before Future can complete

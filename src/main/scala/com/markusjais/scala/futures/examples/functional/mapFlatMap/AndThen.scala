@@ -21,7 +21,7 @@ object AndThen extends App {
   }
 
   bookPriceFuture andThen {
-    case Success(priceTotal) => println("price:" + priceTotal)
+    case Success(priceTotal) => println(s"price: $priceTotal")
     case Failure(t: Throwable) => println(s"Shit, something went wrong: $t")
   }
 

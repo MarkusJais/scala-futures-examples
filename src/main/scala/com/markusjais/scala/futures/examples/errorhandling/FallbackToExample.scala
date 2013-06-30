@@ -13,7 +13,7 @@ object FallbackToExample extends App {
   val userName = Future { db.readFromSlaveDB(42) } fallbackTo Future { db.readFromMasterDB(43) }
 
   userName onComplete {
-    case Success(userName) => println("user:" + userName)
+    case Success(userName) => println(s"user: $userName")
     case Failure(t: Throwable) => println(s"Shit, something went wrong: $t")
   }
   

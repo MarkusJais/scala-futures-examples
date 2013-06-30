@@ -14,7 +14,7 @@ object BrokenConcurreny extends App {
   } yield ("cats: " + catOne + ", " + catTwo)
 
   resultSequential onComplete {
-    case Success(result) => println("success: " + result)
+    case Success(result) => println(s"success: $result")
     case Failure(t: Throwable) => println(s"Shit, something went wrong: $t")
   }
 

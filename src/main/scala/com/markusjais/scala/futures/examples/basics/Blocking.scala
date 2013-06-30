@@ -23,7 +23,7 @@ object Blocking extends App {
   //  Don't do that - blocking is evil! (exception: testing)
   val price = Await.result(bookPriceFuture, 1.second)
 
-  println("price:" + price)
+  println(s"price: $price")
 
 }
 
