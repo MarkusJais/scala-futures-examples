@@ -21,10 +21,6 @@ object OnComplete extends App {
     orders.computeBookValue(books)
   }
 
-//  val result = Await.result(bookPriceFuture, 2 seconds)
-//  println("result:" + result)
-//  //val tmp = bookPriceFuture.value.get
-
   bookPriceFuture onComplete {
     case Success(priceTotal) => println("price:" + priceTotal)
     case Failure(t: Throwable) => println(s"Shit, something went wrong: $t")
