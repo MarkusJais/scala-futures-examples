@@ -11,27 +11,23 @@ object TraverseExample extends App {
 
   val listOfOrderFutures = List.fill(100)(Future { orders.getOrderInEurosFromDb(42) }) // 100 Futures with a Random value
 
-  val totalAmountFuture = Future.sequence(listOfOrderFutures)
-
-  val vatFutureSequenced = totalAmountFuture map { orderAmounts =>
+  val vatFutureSequenced = Future.sequence(listOfOrderFutures) map { orderAmounts =>
     orderAmounts map (_ * 1.2)
-  } map (_.sum) 
+  } map (_.sum)
 
-  // with traverse the intermediate step of sequence is not necessary
+  // with traverse the intermediate step of sequence/map is not necessary
   val vatFutureTraversed = Future.traverse(listOfOrderFutures) { futureAmount =>
     futureAmount map (_ * 1.2)
-  } map (_.sum) 
+  } map (_.sum)
 
   print("total value with sequence: ")
   vatFutureSequenced foreach println
 
   Thread.sleep(10000)
-  
+
   print("\n\ntotal value with traverse: ")
   vatFutureTraversed foreach println
 
-  
-  
   // necessary in this dummy app to let future complete
   System.in.read()
 
