@@ -14,6 +14,9 @@ object SequenceExample extends App {
   val totalAmountFuture = Future.sequence(listOfOrderFutures) map (_.sum) 
   
   print("total value: ")
+  
+  //From the docs (http://docs.scala-lang.org/overviews/core/futures.html):
+  //the function for the foreach gets asynchronously executed only if the future is completed successfully.
   totalAmountFuture foreach println
   
   // necessary in this dummy app to let future complete
