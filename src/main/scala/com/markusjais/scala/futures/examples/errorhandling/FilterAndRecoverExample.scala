@@ -9,7 +9,6 @@ object FilterAndRecoverExample extends App {
   val MIN_PRICE_FOR_ORDER = 100.00
 
   val bookPrice = 50.00
-  val fishPrice = 95.00
 
   val priceWithVatFuture = Future { orders.computeValueWithVat(bookPrice) } filter (_ >= MIN_PRICE_FOR_ORDER)
 
