@@ -19,7 +19,7 @@ object orders {
     books.foldLeft(0.0)(_ + _.price)
   }
 
-  def computerFishalue(fishes: List[Fish]) = {
+  def computeFishValue(fishes: List[Fish]) = {
     sleepRandom
     for (fish <- fishes) {
       if (fish.name.contains("Shark")) {

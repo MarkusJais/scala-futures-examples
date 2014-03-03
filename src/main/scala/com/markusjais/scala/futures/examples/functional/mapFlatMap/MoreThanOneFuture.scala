@@ -21,7 +21,7 @@ object MoreThanOneFuture extends App {
     Fish("Mackerel, MSC", 20.00))
 
   val bookPriceFuture = Future { orders.computeBookValue(books) }
-  val fishPriceFuture = Future { orders.computerFishalue(fishes) }
+  val fishPriceFuture = Future { orders.computeFishValue(fishes) }
 
   val completeValueInDollarsFuture = for {
     bookPrice <- bookPriceFuture
