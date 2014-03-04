@@ -13,11 +13,7 @@ object scala_futures_examples extends Build {
    	  scalaVersion := "2.10.3",
       resolvers ++= Seq(
             "Typesafe Releases" at "http://repo.typesafe.com/typesafe/releases"
-      ),
-
-      libraryDependencies ++= Seq(
-        "com.github.axel22" %% "scalameter" % "0.3" withSources()
-       )
+      )
     )
   )
 }
